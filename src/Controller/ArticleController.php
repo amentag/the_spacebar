@@ -16,4 +16,13 @@ class ArticleController extends AbstractController
 
         ]);
     }
+    /**
+     * @Route("/article/{id}", name="article.show")
+     */
+    public function show(int $id)
+    {
+        return $this->render('article/show.html.twig', [
+
+        ]);
+    }
 }

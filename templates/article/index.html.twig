@@ -9,7 +9,7 @@
             <div class="col-sm-12 col-md-8">
 
                 <!-- H1 Article -->
-                <a class="main-article-link" href="#">
+                <a class="main-article-link" href="{{ path('article.show', {'id': 1}) }}">
                     <div class="main-article mb-5 pb-3">
                         <img src="{{ asset('images/meteor-shower.jpg') }}" alt="meteor shower">
                         <h1 class="text-center mt-2">Ursid Meteor Shower: <br>Healthier than a regular shower?</h1>
@@ -19,7 +19,7 @@
                 <!-- Supporting Articles -->
 
                 <div class="article-container my-1">
-                    <a href="#">
+                    <a href="{{ path('article.show', {'id': '2'}) }}">
                         <img class="article-img" src="{{ asset('images/asteroid.jpeg') }}">
                         <div class="article-title d-inline-block pl-3 align-middle">
                             <span>Why do Asteroids Taste Like Bacon?</span>
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="article-container my-1">
-                    <a href="#">
+                    <a href="{{ path('article.show', {'id': '3'}) }}">
                         <img class="article-img"  src="{{ asset('images/mercury.jpeg') }}">
                         <div class="article-title d-inline-block pl-3 align-middle">
                             <span>Life on Planet Mercury: <br> Tan, Relaxing and Fabulous</span>
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="article-container my-1">
-                    <a href="#">
+                    <a href="{{ path('article.show', {'id': 4}) }}">
                         <img class="article-img" src="{{ asset('images/lightspeed.png') }}">
                         <div class="article-title d-inline-block pl-3 align-middle">
                             <span>Light Speed Travel: <br> Fountain of Youth or Fallacy</span>
