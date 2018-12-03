@@ -6,3 +6,7 @@ bin/console server:run
 ```
 bin/console make:controller
 ```
+#### List routes
+```
+bin/console debug:router
+```
