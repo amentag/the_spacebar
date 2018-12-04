@@ -22,7 +22,7 @@ class ArticleController extends AbstractController
     public function show(int $id)
     {
         return $this->render('article/show.html.twig', [
-
+            'id' => $id
         ]);
     }
 }

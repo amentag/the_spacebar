@@ -5,8 +5,9 @@ $(document).ready(function () {
         let $link = $(e.currentTarget);
         let $count = $('.js-like-article-count');
 
-        $link.toggleClass('fa-heart-o').toggleClass('fa-heart');
-
-        $count.html(parseInt($count.html()) + 1);
+        $.post($link.attr('href'), {'heart': parseInt($count.html())}, function (data) {
+            $link.toggleClass('fa-heart-o').toggleClass('fa-heart');
+            $count.html(data.heart);
+        });
     });
 });
