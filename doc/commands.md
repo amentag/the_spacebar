@@ -24,3 +24,7 @@ bin/console config:dump twig
 bin/console config:dump monolog
 bin/console config:dump KnpMarkdownBundle
 ```
+#### Clear cache
+```
+bin/console cache:clear
+```
