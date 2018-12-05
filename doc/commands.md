@@ -10,3 +10,7 @@ bin/console make:controller
 ```
 bin/console debug:router
 ```
+#### List services
+```
+bin/console debug:autowiring
+```
