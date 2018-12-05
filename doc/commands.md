@@ -42,3 +42,7 @@ Examples:
 bin/console debug:config framework
 bin/console debug:config twig
 ```
+#### Create needed cache
+```
+bin/console cache:warmup
+```
