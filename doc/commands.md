@@ -40,4 +40,5 @@ bin/console debug:config <bundle>
 Examples:
 ```
 bin/console debug:config framework
+bin/console debug:config twig
 ```
