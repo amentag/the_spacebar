@@ -13,4 +13,14 @@ bin/console debug:router
 #### List services
 ```
 bin/console debug:autowiring
-```doc/commands.md
+```
+#### Display bundle config
+```
+bin/console config:dump <bundle>
+```
+Examples:
+```
+bin/console config:dump twig
+bin/console config:dump monolog
+bin/console config:dump KnpMarkdownBundle
+```
