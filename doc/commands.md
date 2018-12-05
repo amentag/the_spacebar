@@ -14,7 +14,7 @@ bin/console debug:router
 ```
 bin/console debug:autowiring
 ```
-#### Display bundle config
+#### Display bundle config options
 ```
 bin/console config:dump <bundle>
 ```
@@ -32,4 +32,12 @@ bin/console cache:clear
 #### Display all services in the container
 ```
 bin/console debug:container --show-private
+```
+#### Display bundle current config
+```
+bin/console debug:config <bundle>
+```
+Examples:
+```
+bin/console debug:config framework
 ```
