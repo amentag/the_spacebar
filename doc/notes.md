@@ -10,3 +10,4 @@ the recipe package is unpacked and it can be possible to remove on library of th
 ##### following
 1. creating a custom log file
 2. autowire custom logger service
+    - il est impossible pour l'autowiring par defaut de choisir le custom logger. Il faudra donc definir les paramètres de la classe implémentant le custom logger.
