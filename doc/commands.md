@@ -46,3 +46,15 @@ bin/console debug:config twig
 ```
 bin/console cache:warmup
 ```
+#### Debug one service in the container
+```
+bin/console debug:container monolog.logger
+```
+#### Display all services in the container by keyword
+```
+bin/console debug:container --show-private <keyword>
+```
+Examples:
+```
+bin/console debug:container --show-private log
+```
