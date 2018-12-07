@@ -3,9 +3,7 @@
 namespace App\Controller;
 
 use App\Service\MarkdownHelper;
-use Michelf\MarkdownInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ArticleController extends AbstractController
@@ -22,8 +20,10 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article/{id}", name="article.show")
      */
-    public function show(int $id, MarkdownHelper $markdownHelper)
+    public function show(int $id, MarkdownHelper $markdownHelper, bool $isDebug)
     {
+        dump($isDebug);
+
         return $this->render('article/show.html.twig', [
             'id' => $id,
             'content' => $markdownHelper->parse($this->getText())
