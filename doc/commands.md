@@ -58,3 +58,7 @@ Examples:
 ```
 bin/console debug:container --show-private log
 ```
+#### Display all container parameters
+```
+bin/console debug:container --parameters
+```
