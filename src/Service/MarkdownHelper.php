@@ -20,16 +20,26 @@ class MarkdownHelper
      * @var LoggerInterface
      */
     private $logger;
+    /**
+     * @var bool
+     */
+    private $isDebug;
 
-    public function __construct(MarkdownInterface $markdown, AdapterInterface $cache, LoggerInterface $markdownLogger)
+    public function __construct(MarkdownInterface $markdown, AdapterInterface $cache, LoggerInterface $markdownLogger, bool $isDebug)
     {
         $this->cache = $cache;
         $this->markdown = $markdown;
         $this->logger = $markdownLogger;
+        $this->isDebug = $isDebug;
     }
 
     public function parse(string $content): string
     {
+        if ($this->isDebug) {
+            $this->logger->info('It is debug mode');
+            return $this->markdown->transform($content);
+        }
+
         $item = $this->cache->getItem('markdown_' . md5($content));
 
         if (!$item->isHit()) {
