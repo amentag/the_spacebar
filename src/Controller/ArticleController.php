@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Repository\ArticleRepository;
 use App\Service\MarkdownHelper;
 use App\Service\SlackClient;
+use Doctrine\ORM\EntityManagerInterface;
 use Nexy\Slack\Attachment;
 use Nexy\Slack\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,23 +16,33 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article", name="article")
      */
-    public function index()
+    public function index(ArticleRepository $repository)
     {
         return $this->render('article/index.html.twig', [
-
+            'articles' => $repository->findAll()
         ]);
     }
     /**
-     * @Route("/article/{id}", name="article.show")
+     * @Route("/article/{slug}", name="article.show")
      */
-    public function show(int $id, MarkdownHelper $markdownHelper, bool $isDebug, SlackClient $slackClient)
+    public function show(string $slug, MarkdownHelper $markdownHelper, bool $isDebug, SlackClient $slackClient, ArticleRepository $repository)
     {
         dump($isDebug);
 
-        $slackClient->sendMessage('bob marley', 'Bonus! LoggerTrait & Setter Injection');
+
+        $article = $repository->findOneBy(['slug' => $slug]);
+
+        if (!$article) {
+            throw $this->createNotFoundException(sprintf("No article for slug %s", $slug));
+        }
+
+        if ($article->getId() === 1) {
+            $slackClient->sendMessage('bob marley', 'Bonus! LoggerTrait & Setter Injection');
+        }
+
 
         return $this->render('article/show.html.twig', [
-            'id' => $id,
+            'article' => $article,
             'content' => $markdownHelper->parse($this->getText())
         ]);
     }
