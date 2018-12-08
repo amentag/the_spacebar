@@ -70,4 +70,8 @@ bin/console about
 #### Database commands 
 ```
 bin/console doctrine:database:create
+bin/console doctrine:database:drop --force
+bin/console make:migration
+bin/console doctrine:migrations:migrate
+bin/console doctrine:migrations:status
 ```
