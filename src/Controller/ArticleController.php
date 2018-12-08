@@ -25,7 +25,7 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article/{slug}", name="article.show")
      */
-    public function show(string $slug, MarkdownHelper $markdownHelper, bool $isDebug, SlackClient $slackClient, ArticleRepository $repository)
+    public function show(string $slug, bool $isDebug, SlackClient $slackClient, ArticleRepository $repository)
     {
         dump($isDebug);
 
@@ -43,7 +43,6 @@ class ArticleController extends AbstractController
 
         return $this->render('article/show.html.twig', [
             'article' => $article,
-            'content' => $markdownHelper->parse($this->getText())
         ]);
     }
 

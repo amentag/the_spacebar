@@ -35,10 +35,11 @@ class MarkdownHelper
 
     public function parse(string $content): string
     {
-        if ($this->isDebug) {
-            $this->logger->info('It is debug mode');
-            return $this->markdown->transform($content);
-        }
+        // todo: enable this code to disable cache to dev env
+//        if ($this->isDebug) {
+//            $this->logger->info('It is debug mode');
+//            return $this->markdown->transform($content);
+//        }
 
         $item = $this->cache->getItem('markdown_' . md5($content));
 
