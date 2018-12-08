@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Service\MarkdownHelper;
+use App\Service\SlackClient;
 use Nexy\Slack\Attachment;
 use Nexy\Slack\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,19 +23,11 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article/{id}", name="article.show")
      */
-    public function show(int $id, MarkdownHelper $markdownHelper, bool $isDebug, Client $slack)
+    public function show(int $id, MarkdownHelper $markdownHelper, bool $isDebug, SlackClient $slackClient)
     {
         dump($isDebug);
 
-        $message = $slack->createMessage();
-
-        $message
-            ->from('marcel')
-            ->withIcon(':ghost:')
-            ->setText('This is an amazing message!')
-        ;
-
-        $slack->sendMessage($message);
+        $slackClient->sendMessage('bob marley', 'Bonus! LoggerTrait & Setter Injection');
 
         return $this->render('article/show.html.twig', [
             'id' => $id,
