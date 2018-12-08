@@ -67,3 +67,7 @@ bin/console debug:container --parameters
 ```
 bin/console about
 ```
+#### Database commands 
+```
+bin/console doctrine:database:create
+```
