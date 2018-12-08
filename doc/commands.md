@@ -49,6 +49,7 @@ bin/console cache:warmup
 #### Debug one service in the container
 ```
 bin/console debug:container monolog.logger
+bin/console debug:container nexy_slack.client
 ```
 #### Display all services in the container by keyword
 ```
@@ -61,4 +62,8 @@ bin/console debug:container --show-private log
 #### Display all container parameters
 ```
 bin/console debug:container --parameters
+```
+#### Display information about app 
+```
+bin/console about
 ```
