@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Service\MarkdownHelper;
+use Nexy\Slack\Attachment;
+use Nexy\Slack\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -20,9 +22,19 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article/{id}", name="article.show")
      */
-    public function show(int $id, MarkdownHelper $markdownHelper, bool $isDebug)
+    public function show(int $id, MarkdownHelper $markdownHelper, bool $isDebug, Client $slack)
     {
         dump($isDebug);
+
+        $message = $slack->createMessage();
+
+        $message
+            ->from('marcel')
+            ->withIcon(':ghost:')
+            ->setText('This is an amazing message!')
+        ;
+
+        $slack->sendMessage($message);
 
         return $this->render('article/show.html.twig', [
             'id' => $id,
