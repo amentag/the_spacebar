@@ -25,6 +25,17 @@ class MarkdownHelper
      */
     private $isDebug;
 
+    /**
+     * @todo documentations
+     *
+     * Depuis la version symfony 4.2, il est maintenant possible d'injecter des valeurs de type scalaire par le biais de l'autowiring.
+     * Il faudra au préalable l'ajouter dans le bind du fichier services.yaml
+     * Exemple:
+     *    services:
+     *      _defaults:
+     *        bind:
+     *          $isDebug: '%kernel.debug%'
+     */
     public function __construct(MarkdownInterface $markdown, AdapterInterface $cache, LoggerInterface $markdownLogger, bool $isDebug)
     {
         $this->cache = $cache;
